@@ -1,115 +1,37 @@
-# NameIt # 
+# PDF DOI Renamer # 
 
-NameIt is a software tool that renames research articles in pdf files in a standardised way. 
+This is a fork of a project called NameIt by Jose Texairia where I had made a significant contribution. This project introduces a DOI-based naming model, spearheaded by my research and implementation efforts. While an existing renaming program was in place, it was initially closed-source and reliant on proprietary software. If you want to use the software please follow the link to the original Github profile for the project. <https://github.com/jaateixeira/nameit>
 
-Based on the pdf metadata and on the content of the document first page, it renames the file  with author, year, title, publication, and publisher. 
+## Key Contributions from Sukrit: ##
 
-# In-and-out
-
-## INPUT: 
-* One or several pdf files (e.g., journal articles) 
-
-## OUTPUT: 
-* The same pdf files are renamed in a standardised way - author, year, title, publication (e.g., journal name), and publisher. 
-
-Example: "s13174-015-0028-2.pdf" as downloaded from the publisher woud become "Teixeira et al. (2015). Lessons learned from applying social network analysis on an industrial Free/Libre/Open Source Software ecosystem. Journal of Internet Services and Applications. Springer.pdf" as renamed by the NameIt tool. 
-
-# Mission # 
-
-* MISSION 1 - Enable researchers across the world to store and find research articles in their computers, servers or shared folders in a easier and faster way.
-* MISSION 2 - Advance the standardisation on how research articles in pdf format are named. 
-
-# Benefits of using NameIT
-
-* Research articles are easier to get.
-* Research articles are stored in a standardized way.
-
-## Advantages of retrieving a well named pdf file from a hard drive over the publisher's website
-
-- Faster to find it 
-- Faster to open it
-- Faster to print it (consider sustainability and ecological issues before printing)
-- Less duplication of digital resources (note that you are saving space on your hard disk and saving traffic on the web)
-- No need to login
-- No need to connect to VPN
-- No need to resolve some DOI
-- No adds
-- No paywalls
-- No overload with related or non-related information 
-- You can get the pdf straight before even seeing the HTML web version
-- No cookies tracking your behaviour online
-- No hidden fingerprinting codes or watermarking schemes that identify the buyers for every copy of each PDF sold
+DOI-Based Naming Model: Researched and developed a cutting-edge naming model utilizing Digital Object Identifiers (DOIs) for enhanced file identification and organization.
+Transition to Open Source: Played a pivotal role in making the renaming program open source, fostering collaboration and transparency within the community.
 
 
-## Advantages of adoptiong the NameIt standard for naming research articles in pdf. 
+## Prerequisites ##
+Make sure you have the following dependencies are fulfilled.
+An active internet connection.
+Habanero: A Python wrapper for the CrossRef Metadata API.
+PyMuPDF: A Python bindings for MuPDF, a lightweight PDF and XPS viewer.
 
-- Easier to understand what is on a file as its filename encodes information on author, year, title, publication (e.g., journal name), and publisher.
-- Easier to link pdf files to entries on software tools suporting systematic literature reviews (see [https://aut.ac.nz.libguides.com/systematic_reviews/tools](https://aut.ac.nz.libguides.com/systematic_reviews/tools) for more information). 
-- Easier to link pdf files to reference management systems (see [https://www.helsinki.fi/en/helsinki-university-library/using-collections/courses-and-workshops/reference-management-software](https://www.helsinki.fi/en/helsinki-university-library/using-collections/courses-and-workshops/reference-management-software) for more information).
-- Better interopability between software tools that deal with research articles in pdf. 
-- Predictability (i.e., you will not be surprised on how a pdf file is named after being downloaded from a publisher website or the website of colleague). 
-- Easier exchangability of collection of research articles between researchers, research groups, libraries and publishers.
+## How to Use ##
+1. Clone the Repository
+2. Run the Python Script renamer_script.py (Provide the location of the directory with PDFs or the individual PDF)
+3. Let the script run and enjoy.
 
-# TARGET USERS:  # 
+Note: 
 
-* Human users - Researchers or research teams that want to store and exchange files with a standard naming convention. 
-* Software users -  Software tools supporting the management of citations, bibliometrics, references, and literature reviews have now a tool and a standard way to "file name" research articles in PDF format.
-
-# Requirements # 
-
-* Python 3
-* Habanero (NameIt will try install it if you don't have it)
-* PyMuPDF (NameIt will try install it if you don't have it)
-
-We suport the ext3, ext4, xfs, zfs, NTFS, APFS, HFS+ and xFAT filesystems. Support for FAT32 pending. 
-Should work in most modern computers running Linux, macOS and Windows. Problems could arise with the use of old  USB flash drives  and SDcard disks in old Linux Kernels. 
-
-# Dependencies 
-
-NameIt tries to automatically install its dependencies. If it fails, you can try to install them using pip - the package installer for Python
-
-## Habanero ##
-`$ pip (or pip3) install habanero`
-
-## PyMuPDF ##
-
-`$ pip (or pip3) install PyMuPDF`
-
-
-# How to use it 
-
-* Install the Habanero and PyMuPDF dependencies 
-
-* Invoke the Python script and pass the file to be renamed as an argument.
-* You can also pass a folder as an argument and NameIt will attempt to rename all pdf files in that folder.
-
-## Example: ## 
-
-
-`$ NameIt 4242343.pdf`
-
-`$ NameIt research-articles-collection`
-
-
-* A GUI version for less tech users is forthcoming  <funding needed - funding being appied - new contributors welcome>.
-
-# How it works 
-
-First, the tool tries to find pdf's metadata to rename the file. If no metadata is found, it will look on the article first page for a DOI (Digital Object Identifier) and then tries 
-to connect to Internet to retrieve the metadata associated to the DOI. 
-
-If pdf's metadata is not found and the retrieval of metadata via the DOI fails, the tool will still try to find the author, year, title, publication, and publisher from the article 1st page. 
-It looks for the size of the text fonts  to distiguish between what is a title or what is the author imformation and so on. 
-
-From more that 100 journal articles downloaded directly from the publishers websites. We could rename 98 without issues.  Author names with no so common accents and articles titles with not so common characters can be problematic.
+- Ensure that the PDF files in your library have a DOI on the first page for accurate renaming.
+- The script utilizes the CrossRef API to extract information based on the DOI.
+- After running the script, your PDF files will be renamed according to the extracted information in APA (7th Formatting).
 
 # License #
 
-MIT license. Please acknowledge derivative works. 
+MIT license. Please acknowledge derivative works to the original project. 
 
-# Aknowledgements 
+# Acknowledgements 
 
 * First created by Jose Teixeira <jose.teixeira@abo.fi>
-* First contribuitions by Sukrit 
+* First contribuitions by Sukrit <sukrit@sukritpant.me>
 * Support from the Academy of Finland via the DiWIL project  <see https://web.abo.fi/projekt/diwil/> 
 * Support from the open-science initiatives of Åbo Akademi 
